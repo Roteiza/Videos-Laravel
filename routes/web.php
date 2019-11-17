@@ -14,16 +14,16 @@
 Use App\Video;
 
 Route::get('/', function () {
-
-    $videos = Video::all();
-    foreach($videos as $video){
-        echo $video->title;
-        echo $video->user->email."<br>";
-        foreach($video->comments as $comment){
-            echo $comment->body;
-        }
-        echo "<hr>";
-    }
-
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+// Rutas Controlador Videos
+Route::get('createVideo', array(
+    'as'         => 'createVideo',
+    'middleware' => 'auth',
+    'uses'       => 'VideoController@createVideo'
+));
