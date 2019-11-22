@@ -11100,3 +11100,13 @@ a.text-dark:focus {
   }
 }
 
+
+/* Estilo personalizado */
+.btn-submit {
+  width: 150px;
+}
+
+.btn-submit-sm {
+  width: 62.7px;
+}
+
