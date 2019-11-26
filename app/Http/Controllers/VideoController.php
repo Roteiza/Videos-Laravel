@@ -63,6 +63,11 @@ class VideoController extends Controller
         return new Response($file, 200);
     }
 
+    /**
+     * Método que retorna el archivo de video
+     * @param - $filename
+     * @return $file, code_response
+     */
     public function getVideo($filename)
     {
         $file = Storage::disk('videos')->get($filename);

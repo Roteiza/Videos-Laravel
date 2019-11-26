@@ -10,7 +10,7 @@ class Video extends Model
 
     // Relación Uno a Muchos
     public function comments() {
-        return $this->hasMany('App\Comment');
+        return $this->hasMany('App\Comment')->orderBy('id', 'desc');
     }
 
     // Relación Mucho a Uno

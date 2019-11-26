@@ -15,6 +15,9 @@
             <div class="card-footer text-muted">
                 {{$video->user->surname}} | <small>{{ FormatTime::LongTimeFilter($video->created_at) }}</small>
             </div>
+            <hr>
+            <h5 class="display-6">Comentarios</h5>
+            @include('video.comments')
         </div>
     </div>
 @endsection

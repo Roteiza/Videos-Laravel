@@ -49,3 +49,10 @@ Route::get('/video/{video_id}', array(
     'as'   => 'detailVideo',
     'uses' => 'VideoController@getVideoDetail'
 ));
+
+// Rutas Comentarios
+Route::post('/comment', array(
+    'as' => 'comment',
+    'middleware' => 'auth',
+    'uses'       => 'CommentController@store'
+));

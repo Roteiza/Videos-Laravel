@@ -11110,3 +11110,12 @@ a.text-dark:focus {
   width: 62.7px;
 }
 
+.footer {
+  background-color: #fff !important;
+}
+
+.comment-panel {
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 5px;
+  
+}

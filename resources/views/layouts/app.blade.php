@@ -93,4 +93,7 @@
         </main>
     </div>
 </body>
+<footer class="text-center p-3 footer">
+    Curso Laravel - RoteizA - 2019
+</footer>
 </html>
