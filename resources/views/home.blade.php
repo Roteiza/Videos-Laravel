@@ -25,15 +25,15 @@
             </div>            
             <div class="card-body">
                 <div class="row">
-                    <div class="col-sm-12 col-lg-4">
-                        <a href="{{route ('detailVideo', ['video_id' => $video->id])}}" class="card-link btn btn-outline-info btn-sm btn-submit-sm my-1">Ver</a>    
+                    <div class="col-sm-12 {{(Auth::check() && Auth::user()->id == $video->user->id) ? 'col-lg-4' : 'col'}}">
+                        <a href="{{route ('detailVideo', ['video_id' => $video->id])}}" class="card-link btn btn-info btn-sm btn-submit-sm my-1 text-white">Ver</a>    
                     </div>
                     @if(Auth::check() && Auth::user()->id == $video->user->id)
                     <div class="col-sm-12 col-lg-4">
-                        <a href="#" class="card-link btn btn-outline-warning btn-sm btn-submit-sm my-1">Editar</a>
+                        <a href="#" class="card-link btn btn-warning btn-sm btn-submit-sm my-1">Editar</a>
                     </div>
                     <div class="col-sm-12 col-lg-4">
-                        <a href="#" class="card-link btn btn-outline-danger btn-sm btn-submit-sm my-1">Eliminar</a>
+                        <a href="#" class="card-link btn btn-danger btn-sm btn-submit-sm my-1">Eliminar</a>
                     </div>
                     @endif
                 </div>
