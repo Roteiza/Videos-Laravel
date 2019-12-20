@@ -32,7 +32,7 @@ class CommentController extends Controller
     {
         $user    = \Auth::user();
         $comment = Comment::find($comment_id);
-
+        
         if($user && ($comment->user_id == $user->id || $comment->video->user_id == $user->id)) {
             $comment->delete();
         }

@@ -59,7 +59,7 @@ class VideoController extends Controller
     public function getImage($filename)
     {
         $file = Storage::disk('images')->get($filename);
-
+        
         return new Response($file, 200);
     }
 
@@ -82,5 +82,41 @@ class VideoController extends Controller
         return view('video.detail', array(
             'video' => $video
         ));
+    }
+
+    public function delete($video_id)
+    {
+        $user     = \Auth::user();
+        $video    = Video::find($video_id);
+        $comments = Comment::where('video_id', $video_id)->get();
+
+        if($user && $video->user_id == $user->id)
+        {
+            // Eliminar Comentarios
+            if($comments && count($comments) >= 1) {
+                foreach($comments as $comment) {
+                    $comment->delete();
+                }
+            }
+            
+            // Eliminar Archivos
+            Storage::disk('images')->delete($video->image);
+            Storage::disk('videos')->delete($video->video_path);
+            
+            // Eliminar Video
+            $video->delete();
+
+            $message = array(
+                'message' => 'Video eliminado correctamente'
+            );
+        }
+        else
+        {
+            $message = array(
+                'message' => 'El usuario no es el propietario del Video'
+            );
+        }
+            
+        return redirect()->route('home')->with($message);
     }
 }

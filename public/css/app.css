@@ -11106,6 +11106,10 @@ a.text-dark:focus {
   width: 150px;
 }
 
+.btn-home {
+  width: 100%;
+}
+
 .btn-submit-sm {
   width: 62.7px;
 }

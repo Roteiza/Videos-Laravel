@@ -25,16 +25,48 @@
             </div>            
             <div class="card-body">
                 <div class="row">
-                    <div class="col-sm-12 {{(Auth::check() && Auth::user()->id == $video->user->id) ? 'col-lg-4' : 'col'}}">
-                        <a href="{{route ('detailVideo', ['video_id' => $video->id])}}" class="card-link btn btn-info btn-sm btn-submit-sm my-1 text-white">Ver</a>    
+                    <div class="col-sm-12 {{(Auth::check() && Auth::user()->id == $video->user->id) ? 'col-lg-12' : 'col'}}">
+                        <a href="{{route ('detailVideo', ['video_id' => $video->id])}}">
+                            <button type="button" class="btn btn-info btn-sm btn-home my-1">
+                                    Ver
+                            </button>
+                        </a>    
                     </div>
                     @if(Auth::check() && Auth::user()->id == $video->user->id)
-                    <div class="col-sm-12 col-lg-4">
-                        <a href="#" class="card-link btn btn-warning btn-sm btn-submit-sm my-1">Editar</a>
+                    <div class="col-sm-12 col-lg-6">
+                        <a href="{{route('detailVideo', ['video_id' => $video->id])}}">
+                            <button type="button" class="btn btn-warning btn-sm btn-home">
+                                    Editar
+                            </button>
+                        </a>
                     </div>
-                    <div class="col-sm-12 col-lg-4">
-                        <a href="#" class="card-link btn btn-danger btn-sm btn-submit-sm my-1">Eliminar</a>
-                    </div>
+                    <div class="col-sm-12 col-lg-6">
+                        <button type="button" class="btn btn-danger btn-sm btn-home" data-toggle="modal" data-target="#deleteModal{{$video->id}}">
+                                Eliminar
+                        </button>
+                        <!-- modal -->
+                        <div class="modal fade" id="deleteModal{{$video->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content text-center">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalCenterTitle">¿Estás seguro?</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>¿Seguro que quieres borrar este elemento?</p>
+                                        <p><b>{{$video->title}}</b></p>
+                                        <p class="text-danger"><small>* Si lo borras, no podrás recuperarlo.</small></p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                        <a href="{{ route('videoDelete', ['video_id' => $video->id])}}" class="btn btn-danger">Eliminar</a>
+                                    </div>
+                                </div><!-- modal-content-->
+                            </div><!-- modal-dialog-->
+                        </div><!-- modal -->
+                    </div><!-- col-sm-12 col-lg-4 -->
                     @endif
                 </div>
             </div>

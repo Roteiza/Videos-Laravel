@@ -56,7 +56,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                            <a href="{{ route('commentDelete', ['comment_id' => $video])}}" class="btn btn-danger">Eliminar</a>
+                            <a href="{{ route('commentDelete', ['comment_id' => $comment->id])}}" class="btn btn-danger">Eliminar</a>
                         </div>
                     </div><!-- modal-content-->
                 </div><!-- modal-dialog-->
