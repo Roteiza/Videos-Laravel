@@ -13,7 +13,7 @@
                 <p class="card-text">{{ $video->description}}</p>                
             </div>
             <div class="card-footer text-muted">
-                {{$video->user->surname}} | <small>{{ FormatTime::LongTimeFilter($video->created_at) }}</small>
+                <a href="{{route('channel',['user_id' => $video->user->id])}}">{{$video->user->surname}}</a> | <small>{{ FormatTime::LongTimeFilter($video->created_at) }}</small>
             </div>
             <hr>
             <h5 class="display-6">Comentarios</h5>

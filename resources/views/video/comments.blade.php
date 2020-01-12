@@ -25,13 +25,16 @@
                 </p>
             </div>
             @if(Auth::check() && (Auth::user()->id == $comment->user_id || Auth::user()->id == $video->user_id))
-            <div class="col-6 mt-2">
+            <div class="col-4 offset-2 mt-2">
                 <p class="float-right">
                     <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#deleteModal{{$comment->id}}">
                             Eliminar
                     </button>
+                    <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#deleteModal{{$comment->id}}">
+                            Editar
+                    </button>
                 </p>
-            </div><!-- col -->
+            </div><!-- col -->            
             @endif            
             <div class="col-12">
                 <p class="float-left">

@@ -8,6 +8,11 @@ use App\Comment;
 
 class CommentController extends Controller
 {
+    /**
+     * Guardar comentario
+     * @param Request $request
+     * @return View (array message) 
+    */
     public function store(Request $request)
     {
         $validate = $this->validate($request, array(
@@ -28,6 +33,11 @@ class CommentController extends Controller
         ));
     }
 
+    /**
+     * Eliminar Comentario
+     * @param Integer $comment_id
+     * @return View (array message) 
+    */
     public function delete($comment_id)
     {
         $user    = \Auth::user();
